@@ -1,5 +1,5 @@
 import assert from "assert";
-import { add } from "../src/langname.js";
+import { add } from "../src/Dodo.js";
 
 describe("The compiler", () => {
   it("gives the correct values for the add function", () => {
