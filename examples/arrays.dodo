@@ -1,0 +1,2 @@
+cage[] emptyList = [];
+cage[][] nonEmptyList = [[1,2],[3,4]];

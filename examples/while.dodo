@@ -1,0 +1,5 @@
+int x = 0;
+sleep (x < 10) : {
+    tweet:x
+    x = x + 1;
+}

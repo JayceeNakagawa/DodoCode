@@ -1,0 +1,9 @@
+pet (x == 1) {
+    tweet:"x is 1";
+}
+feed (x == 2) {
+    tweet:"x is not 2";
+}
+interact {
+    tweet:"x is not 2 or 1";
+}

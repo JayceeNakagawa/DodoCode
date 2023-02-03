@@ -1,0 +1,10 @@
+action f(int x, int y) {
+    pet: x < y {
+        tweet: "x is greater than y"
+    }
+    interact {
+        tweet: "x is not greater than y"
+    }
+}
+
+f(1,2)
