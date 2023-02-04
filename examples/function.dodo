@@ -1,9 +1,9 @@
 action f(int x, int y) {
     pet: x < y {
-        tweet: "x is greater than y"
+        tweet: "y is greater than x";
     }
     interact {
-        tweet: "x is not greater than y"
+        tweet: "y is not greater than x";
     }
 }
 
