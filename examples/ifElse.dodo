@@ -1,9 +1,9 @@
-pet (x == 1) {
-    tweet:"x is 1";
+pet (x==1) {
+    tweet:"x is one";
 }
-feed (x == 2) {
-    tweet:"x is not 2";
+feed (x==2) {
+    tweet:"x is not two";
 }
 interact {
-    tweet:"x is not 2 or 1";
+    tweet:"x is not two or one";
 }
