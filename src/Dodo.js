@@ -3,6 +3,7 @@
 import fs from "fs/promises";
 import process from "process";
 import compile from "./compiler.js";
+// import * from "../examples/test.dodo";
 
 const help = `Dodo compiler
 
@@ -19,6 +20,7 @@ async function compileFromFile(filename, outputType) {
   try {
     const buffer = await fs.readFile(filename);
     console.log(compile(buffer.toString(), outputType));
+    // compile(buffer.toString(), outputType);
   } catch (e) {
     console.error(`\u001b[31m${e}\u001b[39m`);
     process.exitCode = 1;

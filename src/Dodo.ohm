@@ -4,8 +4,7 @@ Program = Statement+
   Statement = Type id "=" Exp ";"                     -- declaration
   		     | If
              | function id "(" ParamDec ")"  Block -- fundec
-             | id "=" Exp ";"                         -- assign
-             | Call ";"                                -- call
+             | Exp7_id "=" Exp ";"                         -- assign
              | break ";"                               --break
              | while "(" Exp ")" Block                  -- while
              | return Exp ";" 	                        -- return
@@ -41,9 +40,9 @@ Program = Statement+
              | Exp7 ("[" | "?[") Exp "]"                --subscript
              | Exp7 ("." | "?.") id                     --member
              | stringlit
-             | id
+             | id                                       --id
              | Array
-             | ":" Exp ":"                              -- parens
+             | "(" Exp ")"                              -- parens
              
   Type	     = Type "[" "]"                             -- array
   		     | int 
@@ -54,7 +53,7 @@ Program = Statement+
 
   Array = "[" Elements "]"
   Block       = "{" Statement* "}"
-  Call        = id ":" Args ":"
+  Call        = id "(" Args ")"
   If          = "pet" "(" Exp ")" Block ElseIf* Else?
   ElseIf      = "feed" "(" Exp ")" Block 
   Else        = "interact" Block

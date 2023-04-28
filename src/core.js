@@ -1,47 +1,40 @@
 import util from "util";
-//used
 export class Program {
   constructor(statements) {
     this.statements = statements;
   }
 }
 
-//used
 export class VariableDeclaration {
   constructor(type, variable, initializer) {
     Object.assign(this, { type, variable, initializer });
   }
 }
 
-//used
 export class Conditional {
   constructor(test, consequent, alternate) {
     Object.assign(this, { test, consequent, alternate });
   }
 }
 
-//used
 export class If {
   constructor(condition, block, elseifs, elseStatement) {
     Object.assign(this, { condition, block, elseifs, elseStatement });
   }
 }
 
-//used
 export class ElseIf {
   constructor(condition, block) {
     Object.assign(this, { condition, block });
   }
 }
 
-//used
 export class Else {
   constructor(block) {
     Object.assign(this, { block });
   }
 }
 
-//used
 export class FunctionDeclaration {
   constructor(type, id, params, block) {
     Object.assign(this, { type, id, params, block });
@@ -54,42 +47,36 @@ export class FuncParam {
   }
 }
 
-//used
 export class Assignment {
   constructor(target, source) {
     Object.assign(this, { target, source });
   }
 }
 
-//used
 export class WhileStatement {
   constructor(test, body) {
     Object.assign(this, { test, body });
   }
 }
 
-//used
 export class ReturnStatement {
   constructor(value) {
     Object.assign(this, { value });
   }
 }
 
-//used
 export class PrintStatement {
   constructor(argument) {
     Object.assign(this, { argument });
   }
 }
 
-//used
 export class Call {
   constructor(callee, args) {
     Object.assign(this, { callee, args });
   }
 }
 
-//used
 export class BreakStatement {
   // Intentionally empty
 }
@@ -121,14 +108,12 @@ export class DodoArray {
   }
 }
 
-//used
 export class BinaryExpression {
   constructor(op, left, right) {
     Object.assign(this, { op, left, right });
   }
 }
 
-//used
 export class UnaryExpression {
   constructor(op, operand) {
     Object.assign(this, { op, operand });
@@ -136,15 +121,12 @@ export class UnaryExpression {
 }
 
 export class SubscriptExpression {
-  // Example: a[20]
   constructor(array, index) {
     Object.assign(this, { array, index });
   }
 }
 
 export class MemberExpression {
-  //we don't have structs, classes, etc. so this is obsolete but language breaks if deleted
-  // Example: state.population
   constructor(object, field) {
     Object.assign(this, { object, field });
   }
@@ -162,17 +144,15 @@ export class Token {
   }
 }
 
-//used
 export class Variable {
-  constructor(name) {
-    Object.assign(this, { name });
+  constructor(name, readOnly) {
+    Object.assign(this, { name, readOnly });
   }
 }
 
-//used
 export class Function {
-  constructor(name, params, type) {
-    Object.assign(this, { name, params, type });
+  constructor(name, params) {
+    Object.assign(this, { name, params });
   }
 }
 
@@ -193,6 +173,16 @@ export function error(message, token) {
   //   }
   throw new Error(message);
 }
+
+export const standardLibrary = Object.freeze({
+  π: new Variable("π", true),
+  sqrt: new Function("sqrt", 1),
+  sin: new Function("sin", 1),
+  cos: new Function("cos", 1),
+  exp: new Function("exp", 1),
+  ln: new Function("ln", 1),
+  hypot: new Function("hypot", 2),
+});
 
 //tree
 Program.prototype[util.inspect.custom] = function () {

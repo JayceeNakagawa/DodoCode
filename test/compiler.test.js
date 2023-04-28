@@ -1,27 +1,40 @@
-// import assert from "assert/strict";
-// import util from "util";
-// import compile from "../src/compiler.js";
+import assert from "assert/strict";
+import util from "util";
+import compile from "../src/compiler.js";
+import { Program } from "../src/core.js";
 
-// const sampleProgram = "tweet:Hello World;";
+const sampleProgram = 'tweet:"Hello World";';
 
-// describe("The compiler", () => {
-//   it("throws when the output type is unknown", (done) => {
-//     assert.throws(() => compile("print(0);", "blah"), /Unknown output type/);
-//     done();
-//   });
-//   it("accepts the analyzed option", (done) => {
-//     const compiled = compile(sampleProgram, "analyzed");
-//     // assert(util.format(compiled).startsWith("   1 | Program")); //can't do yet?
-//     done();
-//   });
-//   it("accepts the optimized option", (done) => {
-//     // const compiled = compile(sampleProgram, "optimized");
-//     // assert(util.format(compiled).startsWith("   1 | Program"));
-//     done();
-//   });
-//   it("generates js code when given the js option", (done) => {
-//     // const compiled = compile(sampleProgram, "js");
-//     // assert(util.format(compiled).startsWith("console.log(0)"));
-//     done();
-//   });
-// });
+describe("The compiler", () => {
+  it("throws when the output type is missing", (done) => {
+    assert.throws(() => compile(sampleProgram), /Unknown output type/);
+    done();
+  });
+  it("throws when the output type is unknown", (done) => {
+    assert.throws(
+      () => compile(sampleProgram, "no such type"),
+      /Unknown output type/
+    );
+    done();
+  });
+  it("accepts the parsed option", (done) => {
+    const compiled = compile(sampleProgram, "parsed");
+    assert(compiled.startsWith("Syntax is ok"));
+    done();
+  });
+  it("accepts the analyzed option", (done) => {
+    const compiled = compile(sampleProgram, "analyzed");
+    assert(compiled instanceof Program);
+    done();
+  });
+  //   it("accepts the optimized option", (done) => {
+  //     const compiled = compile(sampleProgram, "optimized");
+  //     assert(compiled instanceof Program);
+  //     done();
+  //   });
+  //   it("generates js code when given the js option", (done) => {
+  //     const compiled = compile(sampleProgram, "js");
+  //     assert(compiled.startsWith("console.log(0)"));
+  //     done();
+  //   });
+});
